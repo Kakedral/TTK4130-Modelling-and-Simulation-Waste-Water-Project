@@ -1,3 +1,4 @@
 # Wastewater-treatment-Modelica
-vi er en gruppe
-Endre stuff
+
+Repo for storing the files/models used in the Wastewater ModSim project. 
+
