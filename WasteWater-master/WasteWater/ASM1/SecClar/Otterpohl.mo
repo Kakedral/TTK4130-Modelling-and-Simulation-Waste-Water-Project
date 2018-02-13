@@ -2,8 +2,7 @@ within WasteWater.ASM1.SecClar;
 package Otterpohl "Secondary settling tank modelling by Otterpohl"
   extends Modelica.Icons.Library;
 
-  package Interfaces
-    "Connectors and partial ASM1 models for Secondary Clarifier Model by Otterpohl"
+  package Interfaces "Connectors and partial ASM1 models for Secondary Clarifier Model by Otterpohl"
 
     extends Modelica.Icons.Library;
 
@@ -166,7 +165,6 @@ package Otterpohl "Secondary settling tank modelling by Otterpohl"
       Real B4;
 
     algorithm
-
       Xc := 480/ISV;
       nv := 1.043 - 0.9834*exp(-0.00581*ISV);
       hc := (Xf/1000)*(hsc - zm*(i + 0.5))/Xc*(1.0 - 1.0/(Xc*nv));
@@ -218,12 +216,10 @@ Copyright (C) 2003, Gerald Reichl
     package WWU = WasteWater.WasteWaterUnits;
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
-    parameter SI.Length zm=hsc/(1.0*n)
-      "height of m-th secondary clarifier layer";
+    parameter SI.Length zm=hsc/(1.0*n) "height of m-th secondary clarifier layer";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";
     parameter WWU.SludgeVolumeIndex ISV=130 "Sludge Volume Index";
-    parameter Integer i=2
-      "number of layers above current feed layer in this model";
+    parameter Integer i=2 "number of layers above current feed layer in this model";
 
     // total sludge concentration in clarifier feed
     WWU.MassConcentration Xf;
@@ -661,8 +657,8 @@ Sedimentation flux is calculated based on two sedimentation velocities
               -110},{10,-90}})));
     WWSC.UpperLayerPin Up annotation (Placement(transformation(extent={{-10,90},
               {10,110}})));
-    ASM1.Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent
-            ={{-110,-6},{-90,14}})));
+    ASM1.Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent=
+             {{-110,-6},{-90,14}})));
   equation
 
     // sink velocity

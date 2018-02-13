@@ -3,7 +3,6 @@ package ASM1 "Component models for the Activated Sludge Model No.1"
 extends Modelica.Icons.Library;
 
 
-
 model deni "ASM1 denitrification tank"
   //denitrification tank based on the ASM1 model
 
@@ -63,13 +62,14 @@ model nitri "ASM1 nitrification tank"
   extends Interfaces.ASM1base;
 
   // tank specific parameters
-  parameter Modelica.SIunits.Volume V=1000 "Volume of nitrification tank";
+  parameter Modelica.SIunits.Volume V=1333 "Volume of nitrification tank";
 
   // aeration system dependent parameters
   parameter Real alpha=0.7 "Oxygen transfer factor";
   parameter Modelica.SIunits.Length de=4.5 "depth of aeration";
   parameter Real R_air=23.5 "specific oxygen feed factor [gO2/(m^3*m)]";
   WWU.MassConcentration So_sat "Dissolved oxygen saturation";
+  parameter Real Kla = 240;
 
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
             -10},{-90,10}})));
@@ -89,8 +89,8 @@ equation
   // extends the Oxygen differential equation by an aeration term
   // aeration [mgO2/l]; AirIn.Q_air needs to be in
   // Simulationtimeunit [m3*day^-1]
-  aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
-  // aeration = Kla * (So_sat - So);
+  //aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
+   aeration = Kla * (So_sat - So);
 
   // volume dependent dilution term of each concentration
 
@@ -418,20 +418,20 @@ model WWSource "Wastewater source"
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 equation
 
-  Out.Q =-data[1];
-  Out.Si =data[2];
-  Out.Ss =data[3];
-  Out.Xi =data[4];
-  Out.Xs =data[5];
-  Out.Xbh =data[6];
-  Out.Xba =data[7];
-  Out.Xp =data[8];
-  Out.So =data[9];
-  Out.Sno =data[10];
-  Out.Snh =data[11];
-  Out.Snd =data[12];
-  Out.Xnd =data[13];
-  Out.Salk =data[14];
+  Out.Q =-18446; //data[1];
+  Out.Si =30;    //data[2];
+  Out.Ss =69.5;  //data[3];
+  Out.Xi =51.2;  //data[4];
+  Out.Xs =202.32;//data[5];
+  Out.Xbh =28.17;//data[6];
+  Out.Xba =0;    //data[7];
+  Out.Xp =0;     //data[8];
+  Out.So =0;     //data[9];
+  Out.Sno =0;    //data[10];
+  Out.Snh =31.56;//data[11];
+  Out.Snd =6.95; //data[12];
+  Out.Xnd =10.59;//data[13];
+  Out.Salk =7;   //data[14];
 
   annotation (
     Documentation(info="This component provides all ASM1 data at the influent of a wastewater treatment plant.
@@ -778,8 +778,7 @@ further processed with blocks of the Modelica.Blocks library).
 end sensor_O2;
 
 
-model sensor_Q
-  "Ideal sensor to measure the flow rate of an ASM1 wastewater stream"
+model sensor_Q "Ideal sensor to measure the flow rate of an ASM1 wastewater stream"
 
   extends WasteWater.Icons.sensor_Q;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
@@ -844,8 +843,7 @@ signal[2] - N_total
 end sensor_TKN;
 
 
-model sensor_TSS
-  "Ideal sensor to measure total suspended solids concentration (ASM1)"
+model sensor_TSS "Ideal sensor to measure total suspended solids concentration (ASM1)"
 
   extends WasteWater.Icons.sensor_TSS;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
@@ -866,6 +864,7 @@ of ASM1 wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_TSS;
+
 
 annotation (
   Documentation(info="This library contains components to build models of biological municipal

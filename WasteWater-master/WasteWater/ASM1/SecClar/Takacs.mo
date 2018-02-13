@@ -2,8 +2,7 @@ within WasteWater.ASM1.SecClar;
 package Takacs "Secondary settling tank modelling by Takacs"
   extends Modelica.Icons.Library;
 
-  package Interfaces
-    "Connectors and partial models for Secondary Clarifier Model by Takacs"
+  package Interfaces "Connectors and partial models for Secondary Clarifier Model by Takacs"
 
     extends Modelica.Icons.Library;
 
@@ -166,8 +165,7 @@ Copyright (C) 2000 - 2001, Gerald Reichl
 
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
-    parameter SI.Length zm=hsc/(1.0*n)
-      "height of m-th secondary clarifier layer";
+    parameter SI.Length zm=hsc/(1.0*n) "height of m-th secondary clarifier layer";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";
     parameter WWU.MassConcentration Xt=3000.0 "threshold for X";
 
@@ -556,8 +554,8 @@ function by Takacs."),
               -110},{10,-90}})));
     WWSC.UpperLayerPin Up annotation (Placement(transformation(extent={{-10,90},
               {10,110}})));
-    ASM1.Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent
-            ={{-110,-6},{-90,14}})));
+    ASM1.Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent=
+             {{-110,-6},{-90,14}})));
   equation
 
     // sink velocity
