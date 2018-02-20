@@ -1,5 +1,5 @@
 within WasteWater.ASM1;
-model nitri5 "ASM1 nitrification tank"
+model pre2cnitri5 "ASM1 nitrification tank"
   // nitrification (aerated) tank, based on the ASM1 model
 
   extends WasteWater.Icons.nitri;
@@ -13,10 +13,8 @@ model nitri5 "ASM1 nitrification tank"
   parameter Modelica.SIunits.Length de=4.5 "depth of aeration";
   parameter Real R_air=23.5 "specific oxygen feed factor [gO2/(m^3*m)]";
   WWU.MassConcentration So_sat "Dissolved oxygen saturation";
-  //Real Kla;
+  parameter Real Kla = 84;
 
-  Modelica.Blocks.Interfaces.RealOutput Kla annotation (Placement(transformation(
-          extent={{0,0},{50,50}})));
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
             -10},{-90,10}})));
   Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,
@@ -29,7 +27,6 @@ model nitri5 "ASM1 nitrification tank"
             -103},{5,-93}})));
 equation
 
-  So = 2;
   // Temperature dependent oxygen saturation by Simba
   //So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
   So_sat = 8;
@@ -68,7 +65,6 @@ Parameters:
   alpha - oxygen transfer factor
   de    - depth of the aeration system [m]
   R_air - specific oxygen feed factor [g O2/(m3*m)]
-"), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
-            100}}),                                                                      graphics),
+"), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics));
-end nitri5;
+end pre2cnitri5;

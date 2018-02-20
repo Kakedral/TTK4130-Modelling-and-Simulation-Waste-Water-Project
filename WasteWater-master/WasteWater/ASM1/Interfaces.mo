@@ -1,5 +1,6 @@
 within WasteWater.ASM1;
-package Interfaces "Connectors and partial ASM1 model for Wastewater Treatment Modelling"
+package Interfaces
+  "Connectors and partial ASM1 model for Wastewater Treatment Modelling"
 
   extends Modelica.Icons.Library;
 
@@ -84,11 +85,14 @@ air between blower and nitrification tank."));
 
   partial model stoichiometry "ASM1 stoichiometric coefficients"
     // Stoichiometric parameters based on the original ASM1 publication//
-    parameter Real Y_h=0.67 "Heterotrophic Yield [g Xbh COD formed/(g COD utilised)]";
-    parameter Real Y_a=0.24 "Autotrophic Yield [g Xba COD formed/(g N utilised)]";
+    parameter Real Y_h=0.67
+      "Heterotrophic Yield [g Xbh COD formed/(g COD utilised)]";
+    parameter Real Y_a=0.24
+      "Autotrophic Yield [g Xba COD formed/(g N utilised)]";
     parameter Real f_p=0.08 "Fraction of biomass to particulate products [-]";
     parameter Real i_xb=0.08 "Fraction nitrogen in biomass [g N/(g COD)]";
-    parameter Real i_xp=0.06 "Fraction nitrogen in particulate products [g N/(g COD)]";
+    parameter Real i_xp=0.06
+      "Fraction nitrogen in particulate products [g N/(g COD)]";
     annotation (
       Documentation(info=
             "This is a partial model providing the stoichiometric coefficients of the ASM1 model."));
@@ -107,13 +111,18 @@ air between blower and nitrification tank."));
     Real k_a "Ammonification rate f(T) [m3/(g COD day)]";
     Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
     Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
-    parameter Real mu_h_T=4.0 "Maximum heterotrophic growth rate at T=15 deg C [day^-1]";
+    parameter Real mu_h_T=4.0
+      "Maximum heterotrophic growth rate at T=15 deg C [day^-1]";
     parameter Real b_h_T=0.3 "Heterotrophic decay rate at T=15 deg C [day^-1]";
-    parameter Real mu_a_T=0.5 "Maximum autotrophic growth rate at T=15 deg C[day^-1]";
+    parameter Real mu_a_T=0.5
+      "Maximum autotrophic growth rate at T=15 deg C[day^-1]";
     parameter Real b_a_T=0.05 "Autotrophic decay rate at T=15 deg C [day^-1]";
-    parameter Real k_a_T=0.05 "Ammonification rate at T=15 deg C [m3/(g COD day)]";
-    parameter Real k_h_T=3.0 "Maximum specific hydrolysis rate at T=15 deg C [g Xs/(g Xbh COD day)]";
-    parameter Real K_x_T=0.1 "Half-saturation (hydrolysis) at T=15 deg C [g Xs/(g Xbh COD)]";
+    parameter Real k_a_T=0.05
+      "Ammonification rate at T=15 deg C [m3/(g COD day)]";
+    parameter Real k_h_T=3.0
+      "Maximum specific hydrolysis rate at T=15 deg C [g Xs/(g Xbh COD day)]";
+    parameter Real K_x_T=0.1
+      "Half-saturation (hydrolysis) at T=15 deg C [g Xs/(g Xbh COD)]";
     parameter Real K_nh=1.0 "Half-saturation (auto. growth) [g NH-N/m3]";
     parameter Real K_s=10.0 "Half-saturation (hetero. growth) [g COD/m3]";
     parameter Real K_oh=0.2 "Half-saturation (hetero. oxygen) [g O/m3]";
@@ -127,12 +136,15 @@ air between blower and nitrification tank."));
     WWU.MassConcentration Xs(fixed=true) "Slowly biodegradable substrate";
     WWU.MassConcentration Xbh(fixed=true) "Active heterotrophic biomass";
     WWU.MassConcentration Xba(fixed=true) "Active autotrophic biomass";
-    WWU.MassConcentration Xp(fixed=true) "Particulate products from biomass decay";
+    WWU.MassConcentration Xp(fixed=true)
+      "Particulate products from biomass decay";
     WWU.MassConcentration So(fixed=true) "Dissolved oxygen";
     WWU.MassConcentration Sno(fixed=true) "Nitrate and nitrite nitrogen";
     WWU.MassConcentration Snh(fixed=true) "Ammonium nitrogen";
-    WWU.MassConcentration Snd(fixed=true) "Soluble biodegradable organic nitrogen";
-    WWU.MassConcentration Xnd(fixed=true) "Particulate biodegradable organic nitrogen";
+    WWU.MassConcentration Snd(fixed=true)
+      "Soluble biodegradable organic nitrogen";
+    WWU.MassConcentration Xnd(fixed=true)
+      "Particulate biodegradable organic nitrogen";
     WWU.Alkalinity Salk(fixed=true) "Alkalinity";
     Real p1;
     Real p2;

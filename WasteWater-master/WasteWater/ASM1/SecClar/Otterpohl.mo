@@ -2,7 +2,8 @@ within WasteWater.ASM1.SecClar;
 package Otterpohl "Secondary settling tank modelling by Otterpohl"
   extends Modelica.Icons.Library;
 
-  package Interfaces "Connectors and partial ASM1 models for Secondary Clarifier Model by Otterpohl"
+  package Interfaces
+    "Connectors and partial ASM1 models for Secondary Clarifier Model by Otterpohl"
 
     extends Modelica.Icons.Library;
 
@@ -216,10 +217,12 @@ Copyright (C) 2003, Gerald Reichl
     package WWU = WasteWater.WasteWaterUnits;
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
-    parameter SI.Length zm=hsc/(1.0*n) "height of m-th secondary clarifier layer";
+    parameter SI.Length zm=hsc/(1.0*n)
+      "height of m-th secondary clarifier layer";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";
     parameter WWU.SludgeVolumeIndex ISV=130 "Sludge Volume Index";
-    parameter Integer i=2 "number of layers above current feed layer in this model";
+    parameter Integer i=2
+      "number of layers above current feed layer in this model";
 
     // total sludge concentration in clarifier feed
     WWU.MassConcentration Xf;

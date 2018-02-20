@@ -84,8 +84,8 @@ model nitri "ASM1 nitrification tank"
 equation
 
   // Temperature dependent oxygen saturation by Simba
-  So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
-
+  //So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
+  So_sat = 8;
   // extends the Oxygen differential equation by an aeration term
   // aeration [mgO2/l]; AirIn.Q_air needs to be in
   // Simulationtimeunit [m3*day^-1]
@@ -228,14 +228,12 @@ equation
           -2.22045e-15,-17}}));
   connect(S8.Up, S9.Dn) annotation (Line(points={{-2.22045e-15,55},{
           -2.22045e-15,59}}));
-  connect(Feed, S6.In) annotation (Line(points={{-100,10},{-67.5,10},{-67.5,9.8},
+  connect(Feed, S6.In) annotation (Line(points={{-100,14},{-67.5,14},{-67.5,9.8},
           {-35,9.8}}));
-  connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-100},{30,
-          -100}}));
+  connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-96},{30,-96}}));
   connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{
-          67.5,57},{100,57}}));
-  connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-100},{-30,
-          -100}}));
+          67.5,57},{102,57}}));
+  connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-96},{-30,-96}}));
 
   // total sludge concentration in clarifier feed
   Xf = 0.75*(Feed.Xs + Feed.Xbh + Feed.Xba + Feed.Xp + Feed.Xi);
@@ -658,25 +656,6 @@ equation
 end mixer3;
 
 
-model sensor_COD "Ideal sensor to measure chemical oxygen demand (COD)"
-
-  extends WasteWater.Icons.sensor_COD;
-  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
-            -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput COD annotation (Placement(
-        transformation(extent={{88,-10},{108,10}})));
-equation
-
-  In.Q = 0.0;
-  COD = In.Si + In.Ss + In.Xi + In.Xs + In.Xbh + In.Xba + In.Xp;
-
-  annotation (
-    Documentation(info="This component measures the chemical oxygen demand (COD) concentration [g/m3]
-of ASM1 wastewater and provides the result as output signal (to be
-further processed with blocks of the Modelica.Blocks library).
-"));
-end sensor_COD;
-
 
 model sensor_NH "Ideal sensor to measure ammonium nitrogen"
 
@@ -778,7 +757,8 @@ further processed with blocks of the Modelica.Blocks library).
 end sensor_O2;
 
 
-model sensor_Q "Ideal sensor to measure the flow rate of an ASM1 wastewater stream"
+model sensor_Q
+  "Ideal sensor to measure the flow rate of an ASM1 wastewater stream"
 
   extends WasteWater.Icons.sensor_Q;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
@@ -843,7 +823,8 @@ signal[2] - N_total
 end sensor_TKN;
 
 
-model sensor_TSS "Ideal sensor to measure total suspended solids concentration (ASM1)"
+model sensor_TSS
+  "Ideal sensor to measure total suspended solids concentration (ASM1)"
 
   extends WasteWater.Icons.sensor_TSS;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,

@@ -1,5 +1,5 @@
 within WasteWater.ASM1;
-model sensor_Aer "Ideal sensor to measure dissolved oxygen concentration"
+model sensor_EQ_old "Ideal sensor to measure dissolved oxygen concentration"
 
   extends WasteWater.Icons.sensor_O2;
   Modelica.Blocks.Interfaces.RealInput Kla3 annotation (Placement(transformation(extent={{-10,-10},
@@ -19,8 +19,10 @@ model sensor_Aer "Ideal sensor to measure dissolved oxygen concentration"
   Real T(start=1e-3);
 
 equation
-  der(T) = 1.0;
-  der(AE) = 2/T/1.8/1000*1333*(Kla3 + Kla4 + Kla5);
+  COD_e = 0.889;
+  der(EQ) = -1/15*EQ+1/(1000*15)*(2*0.889+1*COD_e);
+  //der(EQ) = -1/T*EQ+1/(1000*T)(B_ss*SS_e+B_COD*COD_e+B_Nkj*S_Nkj+B_NO*S_NO+B_BOD*BOD_e)*Q_e
+
   annotation (
     Documentation(info="This component measures the dissolved oxygen concentration [g/m3]
 of ASM1 wastewater and provides the result as output signal (to be
@@ -58,19 +60,12 @@ further processed with blocks of the Modelica.Blocks library).
           lineColor={0,0,0},
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid),
-        Text(extent={{-36,-22},{36,-44}},
-          textString="Aer
-",        lineColor={0,0,0}),
+        Text(extent={{-36,-10},{36,-32}}, textString=
+                                              "EQ"),
         Line(
           points={{0,-50},{0,-90}},
           thickness=0.5),
         Line(points={{50,0},{88,0}}),
         Text(extent={{-80,100},{80,60}}, textString=
-                                             "%name"),
-        Line(
-          points={{40,-30},{40,-90}},
-          thickness=0.5),
-        Line(
-          points={{-40,-30},{-40,-90}},
-          thickness=0.5)}));
-end sensor_Aer;
+                                             "%name")}));
+end sensor_EQ_old;

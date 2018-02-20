@@ -2,7 +2,8 @@ within WasteWater.ASM1.SecClar;
 package Takacs "Secondary settling tank modelling by Takacs"
   extends Modelica.Icons.Library;
 
-  package Interfaces "Connectors and partial models for Secondary Clarifier Model by Takacs"
+  package Interfaces
+    "Connectors and partial models for Secondary Clarifier Model by Takacs"
 
     extends Modelica.Icons.Library;
 
@@ -165,7 +166,8 @@ Copyright (C) 2000 - 2001, Gerald Reichl
 
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
-    parameter SI.Length zm=hsc/(1.0*n) "height of m-th secondary clarifier layer";
+    parameter SI.Length zm=hsc/(1.0*n)
+      "height of m-th secondary clarifier layer";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";
     parameter WWU.MassConcentration Xt=3000.0 "threshold for X";
 

@@ -65,8 +65,8 @@ package Examples "Demonstration examples of the components of the ASM1 library"
             extent={{81,15},{97,31}})));
     WasteWater.ASM1.sensor_TKN sensor_TKN1 annotation (Placement(transformation(
             extent={{97,14},{113,30}})));
-    WasteWater.ASM1.sensor_COD sensor_COD1 annotation (Placement(transformation(
-            extent={{97,-5},{113,11}})));
+    WasteWater.ASM1.sensor_COD sensor_COD1
+      annotation (Placement(transformation(extent={{97,-5},{113,11}})));
     Modelica.Blocks.Sources.Step OxygenSetpoint(height=1.5)
       annotation (Placement(transformation(extent={{37,40},{57,60}})));
     WasteWater.ASM1.SecClar.Krebs.SecClarModKrebs Settler annotation (Placement(
@@ -234,8 +234,8 @@ Main Author:
             extent={{81,15},{97,31}})));
     WasteWater.ASM1.sensor_TKN sensor_TKN1 annotation (Placement(transformation(
             extent={{97,14},{113,30}})));
-    WasteWater.ASM1.sensor_COD sensor_COD1 annotation (Placement(transformation(
-            extent={{97,-5},{113,11}})));
+    WasteWater.ASM1.sensor_COD sensor_COD1
+      annotation (Placement(transformation(extent={{97,-5},{113,11}})));
     Modelica.Blocks.Sources.Step OxygenSetpoint(height=2)
       annotation (Placement(transformation(extent={{36,40},{56,60}})));
     WasteWater.ASM1.sensor_TSS sensor_TSS1 annotation (Placement(transformation(
@@ -358,7 +358,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
               -168,65},{-148,85}})));
     Modelica.Blocks.Sources.Constant Constant2(k=0.8)
       annotation (Placement(transformation(extent={{-178,52},{-168,62}})));
-    blower blower1(Q_max=162816) "there exist 4 blowers of 4240 Nm3/h each, Q_max adusted according active aerated tanks"
+    blower blower1(Q_max=162816)
+      "there exist 4 blowers of 4240 Nm3/h each, Q_max adusted according active aerated tanks"
        annotation (Placement(transformation(extent={{145,-16},{165,4}})));
     nitri nitri2(
       V=2772,
@@ -378,7 +379,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
       alpha=0.305,
       de=5.24,
       R_air=21) annotation (Placement(transformation(extent={{144,18},{164,38}})));
-    blower blower2(Q_max=81408) "there exist 4 blowers of 4240 Nm3/h each, Q_max adjusted according active aerated tanks"
+    blower blower2(Q_max=81408)
+      "there exist 4 blowers of 4240 Nm3/h each, Q_max adjusted according active aerated tanks"
        annotation (Placement(transformation(extent={{111,-13},{131,7}})));
     pump ReturnPump(Q_max=60480) annotation (Placement(transformation(
           origin={-44,-94},
@@ -418,7 +420,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
       alpha=0.305,
       de=5.24,
       R_air=21) annotation (Placement(transformation(extent={{12,14},{32,34}})));
-    blower blower3(Q_max=162816) "there exist 4 blowers of max 4240 Nm3/h, Q_max adusted according active aerated tanks"
+    blower blower3(Q_max=162816)
+      "there exist 4 blowers of max 4240 Nm3/h, Q_max adusted according active aerated tanks"
        annotation (Placement(transformation(extent={{13,-23},{33,-3}})));
     Modelica.Blocks.Sources.Constant Constant7(k=0.56)
       annotation (Placement(transformation(extent={{-66,98},{-56,108}})));
@@ -472,10 +475,10 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
             extent={{164,38},{184,58}})));
     WasteWater.ASM1.sensor_O2 sensor_O2_2 annotation (Placement(transformation(
             extent={{14,38},{34,58}})));
-    WasteWater.ASM1.sensor_COD sensor_COD1 annotation (Placement(transformation(
-            extent={{134,-56},{154,-36}})));
-    WasteWater.ASM1.sensor_COD sensor_COD2 annotation (Placement(transformation(
-            extent={{-118,94},{-98,114}})));
+    WasteWater.ASM1.sensor_COD sensor_COD1
+      annotation (Placement(transformation(extent={{134,-56},{154,-36}})));
+    WasteWater.ASM1.sensor_COD sensor_COD2
+      annotation (Placement(transformation(extent={{-118,94},{-98,114}})));
     WasteWater.ASM1.Examples.JenaSecClarModTakacs Settler(hsc=3.46, Asc=3704)
       "The depth is calculated based on V and A of the settler and not the true depth."
        annotation (Placement(transformation(extent={{68,-84},{88,-64}})));
@@ -723,7 +726,8 @@ Main Author:
 "));
   end ComplexPlant;
 
-  model JenaSecClarModTakacs "Secondary Clarifier Model based on Takacs prepared for a special plant"
+  model JenaSecClarModTakacs
+    "Secondary Clarifier Model based on Takacs prepared for a special plant"
 
     extends WasteWater.Icons.SecClar;
     extends ASM1.SecClar.Takacs.Interfaces.ratios;
@@ -733,7 +737,8 @@ Main Author:
     package WWU = WasteWater.WasteWaterUnits;
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
-    parameter SI.Length zm=hsc/(1.0*n) "height of m-th secondary clarifier layer";
+    parameter SI.Length zm=hsc/(1.0*n)
+      "height of m-th secondary clarifier layer";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";
     parameter WWU.MassConcentration Xt=3000.0 "threshold for X";
     // total sludge concentration in clarifier feed
@@ -887,7 +892,7 @@ Parameters:
     Modelica.Blocks.Sources.Constant Constant1(k=55338)
                                                annotation (Placement(
           transformation(extent={{-96,-57},{-76,-37}})));
-    ASM1.pump RecyclePump(Q_max=92230) annotation (Placement(transformation(
+    ASM1.pump RecyclePump(Q_max=55338) annotation (Placement(transformation(
           origin={-84,-12},
           extent={{-10,-10},{10,10}},
           rotation=180)));
@@ -907,11 +912,10 @@ Parameters:
             extent={{81,15},{97,31}})));
     WasteWater.ASM1.sensor_TKN sensor_TKN1 annotation (Placement(transformation(
             extent={{97,14},{113,30}})));
-    WasteWater.ASM1.sensor_COD sensor_COD1 annotation (Placement(transformation(
-            extent={{97,-5},{113,11}})));
+    WasteWater.ASM1.sensor_COD sensor_COD1
+      annotation (Placement(transformation(extent={{97,-5},{113,11}})));
     WasteWater.ASM1.sensor_TSS sensor_TSS1 annotation (Placement(transformation(
             extent={{32,15},{48,30}})));
-    WasteWater.ASM1.nitri5 tank5 annotation (Placement(transformation(extent={{-6,-6},{14,14}})));
     Modelica.Blocks.Sources.CombiTimeTable CombiTableTime(
       fileName=Modelica.Utilities.Files.loadResource("modelica://WasteWater/Resources/ASM1/Inf_dry.txt"),
       table=[0,0; 1,1],
@@ -919,6 +923,8 @@ Parameters:
       tableName="Inf_dry",
       tableOnFile=("Inf_dry") <> "NoName") annotation (Placement(transformation(
             extent={{-115,78},{-95,98}})));
+    WasteWater.ASM1.pre2cnitri5 tank5
+      annotation (Placement(transformation(extent={{-6,-6},{14,14}})));
   equation
     connect(divider.Out1, Settler.Feed) annotation (Line(points={{40,6.6},{44,6.6},{44,6.4},{48,6.4}}));
     connect(tank3.Out, tank4.In) annotation (Line(points={{-40,4},{-32,4}}));
@@ -966,29 +972,26 @@ Parameters:
         points={{-75,-47},{-67,-47},{-67,-14},{-75.1,-14},{-75.1,-14.5}},
         color={0,0,127},
         smooth=Smooth.None));
-    connect(tank5.Out, divider.In)
-      annotation (Line(
-        points={{14,4},{17,4},{17,4.3},{20,4.3}},
-        color={0,0,0},
-        smooth=Smooth.None));
-    connect(tank5.In, tank4.Out) annotation (Line(
-        points={{-6,4},{-12,4}},
-        color={0,0,255},
-        smooth=Smooth.None));
-    connect(tank5.T, tank4.T)
-      annotation (Line(
-        points={{-6,8},{-6,14},{-32,14},{-32,8}},
-        color={0,0,127},
-        smooth=Smooth.None));
     connect(CombiTableTime.y, WWSource.data)
       annotation (Line(
         points={{-94,88},{-87,88}},
         color={0,0,127},
         smooth=Smooth.None));
-    connect(sensor_O2.In, tank5.MeasurePort)
-      annotation (Line(
+    connect(tank5.Out, divider.In) annotation (Line(
+        points={{14,4},{17,4},{17,4.3},{20,4.3}},
+        color={0,0,0},
+        smooth=Smooth.None));
+    connect(tank4.Out, tank5.In) annotation (Line(
+        points={{-12,4},{-6,4}},
+        color={0,0,0},
+        smooth=Smooth.None));
+    connect(sensor_O2.In, tank5.MeasurePort) annotation (Line(
         points={{9.5,25},{9.5,8.5}},
         color={0,0,255},
+        smooth=Smooth.None));
+    connect(tank5.T, tank4.T) annotation (Line(
+        points={{-6,8},{-19,8},{-19,14},{-32,14},{-32,8}},
+        color={0,0,127},
         smooth=Smooth.None));
     annotation (
       Diagram(coordinateSystem(
@@ -1035,14 +1038,10 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
               -28},{108,-8}})));
     ASM1.SludgeSink WasteSludge annotation (Placement(transformation(extent={{
               87,-51},{107,-31}})));
-    ASM1.SecClarModTakacs Settler annotation (Placement(transformation(extent={
-              {48,-5},{68,15}})));
+    ASM1.SecClarModTakacs Settler annotation (Placement(transformation(extent={{46,-4},
+              {66,16}})));
     ASM1.divider2 divider annotation (Placement(transformation(extent={{20,-6},
               {40,14}})));
-    ASM1.nitri tank4(V=1333) annotation (Placement(transformation(extent={{-32,
-              -6},{-12,14}})));
-    ASM1.nitri tank3(V=1333) annotation (Placement(transformation(extent={{-60,
-              -6},{-40,14}})));
     ASM1.deni tank2 annotation (Placement(transformation(extent={{-48,22},{-28,
               42}})));
     ASM1.deni tank1 annotation (Placement(transformation(extent={{-76,22},{-56,
@@ -1058,7 +1057,7 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     Modelica.Blocks.Sources.Constant Constant1(k=55338)
                                                annotation (Placement(
           transformation(extent={{-96,-57},{-76,-37}})));
-    ASM1.pump RecyclePump(Q_max=92230) annotation (Placement(transformation(
+    ASM1.pump RecyclePump(Q_max=55338) annotation (Placement(transformation(
           origin={-84,-12},
           extent={{-10,-10},{10,10}},
           rotation=180)));
@@ -1078,8 +1077,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
             extent={{81,15},{97,31}})));
     WasteWater.ASM1.sensor_TKN sensor_TKN1 annotation (Placement(transformation(
             extent={{97,14},{113,30}})));
-    WasteWater.ASM1.sensor_COD sensor_COD1 annotation (Placement(transformation(
-            extent={{97,-5},{113,11}})));
+    WasteWater.ASM1.sensor_COD sensor_COD1
+      annotation (Placement(transformation(extent={{97,-5},{113,11}})));
     WasteWater.ASM1.sensor_TSS sensor_TSS1 annotation (Placement(transformation(
             extent={{32,15},{48,30}})));
     WasteWater.ASM1.nitri5 tank5 annotation (Placement(transformation(extent={{-6,-6},{14,14}})));
@@ -1090,12 +1089,17 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
       tableName="Inf_dry",
       tableOnFile=("Inf_dry") <> "NoName") annotation (Placement(transformation(
             extent={{-115,78},{-95,98}})));
-    WasteWater.ASM1.sensor_Aer sensor_Aer annotation (Placement(transformation(extent={{-12,40},{8,60}})));
+    WasteWater.ASM1.sensor_Aer sensor_Aer
+      annotation (Placement(transformation(extent={{-14,49},{6,69}})));
+    WasteWater.ASM1.nitri2 tank3
+      annotation (Placement(transformation(extent={{-67,-6},{-47,14}})));
+    WasteWater.ASM1.nitri2 tank4
+      annotation (Placement(transformation(extent={{-37,-6},{-17,14}})));
+    WasteWater.ASM1.sensor_EQ sensor_EQ
+      annotation (Placement(transformation(extent={{50,44},{70,64}})));
   equation
-    connect(divider.Out1, Settler.Feed) annotation (Line(points={{40,6.6},{44,6.6},{44,6.4},{48,6.4}}));
-    connect(tank3.Out, tank4.In) annotation (Line(points={{-40,4},{-32,4}}));
-    connect(tank3.In, tank2.Out) annotation (Line(points={{-60,4},{-70,4},{-70,
-            18},{-18,18},{-18,32},{-28,32}}));
+    connect(divider.Out1, Settler.Feed) annotation (Line(points={{40,6.6},{44,
+            6.6},{44,7.4},{46,7.4}}));
     connect(tank1.Out, tank2.In) annotation (Line(points={{-56,32},{-48,32}}));
     connect(mixer.Out, tank1.In) annotation (Line(points={{-84,31.6},{-80,31.6},{-80,32},{-76,32}}));
     connect(mixer.In1, WWSource.Out) annotation (Line(points={{-104,35.5},{-104,74},{-68,74},{-68,81},{-68.2,81}}));
@@ -1103,8 +1107,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
             {-32,36.5},{-32.5,36.5}}));
     connect(divider.Out2, RecyclePump.In) annotation (Line(points={{40,2.5},{44,2.5},{44,-8.7},{-74,-8.7}}));
     connect(RecyclePump.Out, mixer.In3) annotation (Line(points={{-94,-14.8},{-104,-14.8},{-104,27.5}}));
-    connect(Settler.Return, ReturnPump.In) annotation (Line(points={{55,-4.6},{
-            55,-22.7},{36,-22.7}}));
+    connect(Settler.Return, ReturnPump.In) annotation (Line(points={{53,-3.6},{
+            53,-22.7},{36,-22.7}}));
     connect(ReturnPump.Out, mixer.In2) annotation (Line(points={{16,-28.8},{15.5,-28.8},{15.5,-30},{-112,-30},{-112,31.5},{-104,31.5}}));
     connect(Temperature.y, tank1.T)
       annotation (Line(points={{-81.4,56},{-78,56},{-78,36},{-76,36}},   color=
@@ -1112,22 +1116,23 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     connect(Temperature.y, tank2.T)
       annotation (Line(points={{-81.4,56},{-52,56},{-52,36},{-48,36}}, color={0,
             0,255}));
-    connect(Temperature.y, tank3.T) annotation (Line(points={{-81.4,56},{-52,56},{-52,14},{-60,14},{-60,8},{-59.5,8},{-60,8}},
-                                                                        color={
-            0,0,255}));
-    connect(Temperature.y, tank4.T) annotation (Line(points={{-81.4,56},{-52,56},{-52,14},{-32,14},{-32,8}},
-                                        color={0,0,255}));
     connect(WastePump.Out, WasteSludge.In) annotation (Line(points={{79,-42.2},{81,-42.2},{81,-42},{83,-42},{83,-42.2},{87,-42.2}}));
-    connect(WastePump.In, Settler.Waste) annotation (Line(points={{59,-48.3},{52,-48.3},{52,-31},{61,-31},{61,-4.6}}));
+    connect(WastePump.In, Settler.Waste) annotation (Line(points={{59,-48.3},{
+            52,-48.3},{52,-31},{59,-31},{59,-3.6}}));
     connect(WastePump.u, Constant2.y)
       annotation (Line(points={{60.1,-42.5},{46,-42.5},{46,-58},{43,-58}},
                                                                      color={0,0,
             255}));
-    connect(sensor_NH1.In, Settler.Effluent) annotation (Line(points={{72,15},{72,10.7},{68.2,10.7}}));
-    connect(sensor_NO1.In, Settler.Effluent) annotation (Line(points={{89,15},{89,10.7},{68.2,10.7}}));
-    connect(sensor_TKN1.In, Settler.Effluent) annotation (Line(points={{105,14},{105,10.7},{68.2,10.7}}));
-    connect(sensor_COD1.In, Settler.Effluent) annotation (Line(points={{105,-5},{105,10.7},{68.2,10.7}}));
-    connect(Effluent.In, Settler.Effluent) annotation (Line(points={{88,-16},{78.5,-16},{78.5,10.7},{68.2,10.7}}));
+    connect(sensor_NH1.In, Settler.Effluent) annotation (Line(points={{72,15},{
+            72,11.7},{66.2,11.7}}));
+    connect(sensor_NO1.In, Settler.Effluent) annotation (Line(points={{89,15},{
+            89,11.7},{66.2,11.7}}));
+    connect(sensor_TKN1.In, Settler.Effluent) annotation (Line(points={{105,14},
+            {105,11.7},{66.2,11.7}}));
+    connect(sensor_COD1.In, Settler.Effluent) annotation (Line(points={{105,-5},
+            {105,11.7},{66.2,11.7}}));
+    connect(Effluent.In, Settler.Effluent) annotation (Line(points={{88,-16},{
+            78.5,-16},{78.5,11.7},{66.2,11.7}}));
     connect(Constant2.y, ReturnPump.u)
       annotation (Line(points={{43,-58},{46,-58},{46,-28.5},{34.9,-28.5}},
                                                                        color={0,
@@ -1143,15 +1148,6 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
         points={{14,4},{17,4},{17,4.3},{20,4.3}},
         color={0,0,0},
         smooth=Smooth.None));
-    connect(tank5.In, tank4.Out) annotation (Line(
-        points={{-6,4},{-12,4}},
-        color={0,0,255},
-        smooth=Smooth.None));
-    connect(tank5.T, tank4.T)
-      annotation (Line(
-        points={{-6,8},{-6,14},{-32,14},{-32,8}},
-        color={0,0,127},
-        smooth=Smooth.None));
     connect(CombiTableTime.y, WWSource.data)
       annotation (Line(
         points={{-94,88},{-87,88}},
@@ -1160,6 +1156,46 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     connect(sensor_O2.In, tank5.MeasurePort)
       annotation (Line(
         points={{9.5,25},{9.5,8.5}},
+        color={0,0,255},
+        smooth=Smooth.None));
+    connect(tank3.Out, tank4.In) annotation (Line(
+        points={{-47,4},{-37,4}},
+        color={0,0,0},
+        smooth=Smooth.None));
+    connect(tank4.Out, tank5.In) annotation (Line(
+        points={{-17,4},{-6,4}},
+        color={0,0,0},
+        smooth=Smooth.None));
+    connect(tank3.In, tank2.Out) annotation (Line(
+        points={{-67,4},{-70,4},{-70,20},{-24,20},{-24,32},{-28,32}},
+        color={0,0,255},
+        smooth=Smooth.None));
+    connect(tank3.T, tank2.T) annotation (Line(
+        points={{-67,8},{-67,18},{-52,18},{-52,36},{-48,36}},
+        color={0,0,127},
+        smooth=Smooth.None));
+    connect(tank4.T, tank2.T) annotation (Line(
+        points={{-37,8},{-42,8},{-42,18},{-52,18},{-52,36},{-48,36}},
+        color={0,0,127},
+        smooth=Smooth.None));
+    connect(tank5.T, tank2.T) annotation (Line(
+        points={{-6,8},{-6,18},{-52,18},{-52,36},{-48,36}},
+        color={0,0,127},
+        smooth=Smooth.None));
+    connect(tank3.Kla, sensor_Aer.Kla3) annotation (Line(
+        points={{-54.5,6.5},{-54.5,16},{-8,16},{-8,50}},
+        color={0,0,127},
+        smooth=Smooth.None));
+    connect(tank4.Kla, sensor_Aer.Kla4) annotation (Line(
+        points={{-24.5,6.5},{-24.5,14},{-4,14},{-4,50}},
+        color={0,0,127},
+        smooth=Smooth.None));
+    connect(tank5.Kla, sensor_Aer.Kla5) annotation (Line(
+        points={{6.5,6.5},{6.5,15},{0,15},{0,50}},
+        color={0,0,127},
+        smooth=Smooth.None));
+    connect(sensor_EQ.In, Settler.Effluent) annotation (Line(
+        points={{60,44},{60,21},{66.2,21},{66.2,11.7}},
         color={0,0,255},
         smooth=Smooth.None));
     annotation (
