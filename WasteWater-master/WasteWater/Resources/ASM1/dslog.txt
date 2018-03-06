@@ -1,12 +1,29 @@
 Log-file of program ./dymosim
-(generated: Tue Feb 20 12:06:27 2018)
+(generated: Tue Mar 06 10:26:29 2018)
 
 dymosim started
 ... "dsin.txt" loading (dymosim input file)
 ... starting from known values.
-... loading "Inf_dry" from "C:/Users/irjag/Downloads/WasteWater/Resources/ASM1/Inf_dry.txt"
-The following error was detected at time: 100
+... loading "Inf_dry" from "C:/Users/kevinme/Downloads/WasteWater-master/WasteWater/Resources/ASM1/Inf_dry.txt"
+... "BSM3.mat" creating (simulation result file)
 
-Model error - division by zero: (18061*(2*sensor_EQ.SS+1*sensor_EQ.COD+30*sensor_EQ.Snkj+10*Settler.S10.Sno+2*sensor_EQ.BOD)) / (1000*sensor_EQ.T) = (4.85035e+006) / (0)
-
-Error: Failed to start model.
+Integration started at T = 0 using integration method LSODAR
+(Multi-step solver for stiff and non-stiff ODE's with root finder (lsodar of ODEPACK))
+Integration terminated successfully at T = 14
+   CPU-time for integration      : 3.02 seconds
+   CPU-time for one GRID interval: 30.2 milli-seconds
+   Number of result points       : 102
+   Number of GRID   points       : 101
+   Number of (successful) steps  : 29840
+   Number of F-evaluations       : 218999
+   Number of H-evaluations       : 29940
+   Number of Jacobian-evaluations: 7865
+   Number of (model) time events : 0
+   Number of (U) time events     : 0
+   Number of state    events     : 0
+   Number of step     events     : 0
+   Minimum integration stepsize  : 6.08e-005
+   Maximum integration stepsize  : 0.00215
+   Maximum integration order     : 4
+Calling terminal section
+... "dsfinal.txt" creating (final states)

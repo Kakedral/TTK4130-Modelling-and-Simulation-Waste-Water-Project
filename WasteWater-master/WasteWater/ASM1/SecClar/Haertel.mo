@@ -146,6 +146,7 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM1)"
       Real B4;
 
     algorithm
+
       Xc := 480/ISV;
       nv := 1.043 - 0.9834*exp(-0.00581*ISV);
       hc := (Xf/1000)*(hsc - zm*(i + 0.5))/Xc*(1.0 - 1.0/(Xc*nv));

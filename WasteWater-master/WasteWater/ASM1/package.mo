@@ -3,6 +3,7 @@ package ASM1 "Component models for the Activated Sludge Model No.1"
 extends Modelica.Icons.Library;
 
 
+
 model deni "ASM1 denitrification tank"
   //denitrification tank based on the ASM1 model
 
@@ -416,20 +417,37 @@ model WWSource "Wastewater source"
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 equation
 
-  Out.Q =-18446; //data[1];
-  Out.Si =30;    //data[2];
-  Out.Ss =69.5;  //data[3];
-  Out.Xi =51.2;  //data[4];
-  Out.Xs =202.32;//data[5];
-  Out.Xbh =28.17;//data[6];
-  Out.Xba =0;    //data[7];
-  Out.Xp =0;     //data[8];
-  Out.So =0;     //data[9];
-  Out.Sno =0;    //data[10];
-  Out.Snh =31.56;//data[11];
-  Out.Snd =6.95; //data[12];
-  Out.Xnd =10.59;//data[13];
-  Out.Salk =7;   //data[14];
+/*
+  Out.Q =-18446;
+  Out.Si =30;
+  Out.Ss =69.5;
+  Out.Xi =51.2;
+  Out.Xs =202.32;
+  Out.Xbh =28.17;
+  Out.Xba =0;
+  Out.Xp =0;
+  Out.So =0;
+  Out.Sno =0;
+  Out.Snh =31.56;
+  Out.Snd =6.95;
+  Out.Xnd =10.59;
+  Out.Salk =7;
+  */
+
+  Out.Q =-data[1];
+  Out.Si =data[2];
+  Out.Ss =data[3];
+  Out.Xi =data[4];
+  Out.Xs =data[5];
+  Out.Xbh =data[6];
+  Out.Xba =data[7];
+  Out.Xp =data[8];
+  Out.So =data[9];
+  Out.Sno =data[10];
+  Out.Snh =data[11];
+  Out.Snd =data[12];
+  Out.Xnd =data[13];
+  Out.Salk =data[14];
 
   annotation (
     Documentation(info="This component provides all ASM1 data at the influent of a wastewater treatment plant.
@@ -656,6 +674,25 @@ equation
 end mixer3;
 
 
+model sensor_COD "Ideal sensor to measure chemical oxygen demand (COD)"
+
+  extends WasteWater.Icons.sensor_COD;
+  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
+            -110},{10,-90}})));
+  Modelica.Blocks.Interfaces.RealOutput COD annotation (Placement(
+        transformation(extent={{88,-10},{108,10}})));
+equation
+
+  In.Q = 0.0;
+  COD = In.Si + In.Ss + In.Xi + In.Xs + In.Xbh + In.Xba + In.Xp;
+
+  annotation (
+    Documentation(info="This component measures the chemical oxygen demand (COD) concentration [g/m3]
+of ASM1 wastewater and provides the result as output signal (to be
+further processed with blocks of the Modelica.Blocks library).
+"));
+end sensor_COD;
+
 
 model sensor_NH "Ideal sensor to measure ammonium nitrogen"
 
@@ -845,7 +882,6 @@ of ASM1 wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_TSS;
-
 
 annotation (
   Documentation(info="This library contains components to build models of biological municipal
